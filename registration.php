@@ -41,16 +41,18 @@ if(isset($_POST['send'])){
 	<meta charset="UTF-8">
 	<title>Registration</title>
 	<link rel="stylesheet" href="reg.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/validateForm.js"></script>
 </head>
 <body>
-
-	<form action="" method="POST">
+	<form action="" method="POST" id="regForm">
 		<label>Firstname: <input type="text" name="firstname" placeholder="firstname"></label>
 		<label>Lastname: <input type="text" name="lastname" placeholder="lastname"></label>
 		<label>Login: <input type="text" name="login" placeholder="login"></label>
 		<label>Email: <input type="text" name="email" placeholder="email"></label>
 		<label>Password: <input type="password" name="password" placeholder="password"></label>
-		<label>Repeat the password: <input type="password" name="checkPassword"  placeholder="repeat the password">
+		<label>Repeat the password: <input type="password" name="checkPassword" placeholder="repeat the password">
 		<input type="submit" value="Send" name="send">
 	</form>
 
