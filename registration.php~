@@ -40,7 +40,7 @@ if(isset($_POST['send'])){
 <head>
 	<meta charset="UTF-8">
 	<title>Registration</title>
-	<link rel="stylesheet" href="public/css/reg.css">
+	<link rel="stylesheet" href="reg.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="js/validateForm.js"></script>
