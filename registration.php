@@ -44,6 +44,49 @@ if(isset($_POST['send'])){
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="js/validateForm.js"></script>
+
+	<script type="text/javascript">
+
+		/*только новые браузеры*/ /*изменить!!!!*/
+		function getXMLHttpRequest(){
+			if(document.XMLHttpRequest)
+				return new XMLHttpRequest();
+			else
+				return false;
+		}
+
+		function checkLogin(login){
+			var request = new XMLHttpRequest();
+
+			request.onreadystatechange = function(){
+				if(request.readyState == 4)
+					console.log(request.responseText);
+			};
+
+			request.open("GET", "checklogin.php?login=" + login, true);
+			// request.open("GET", "", false);
+			request.send(null);
+		}
+
+
+		/*Обработчик события для инпута, при кейапе в фокусе проверять логин*/
+		$(document).ready(function(){
+
+			$('input[name=login]').focus(function(){
+
+				$(this).keyup(function(){
+
+					var login = $('input[name=login]').val();
+					console.log(login);
+
+					if(login.length >= 6) //наверно надо константу приделать
+						checkLogin(login);
+				});
+			});
+		});
+
+	</script>
+
 </head>
 <body>
 	<form action="" method="POST" id="regForm">
