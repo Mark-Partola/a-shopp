@@ -1,12 +1,12 @@
 $(document).ready(function(){
 
-	$("#regForm").validate({
+	$("#form_reg").validate({
 
 		rules:{
 
 			login:{
 				required: true,
-				minlength: 6,
+				minlength: 4,
 				maxlength: 16,
 			},
 
@@ -22,21 +22,21 @@ $(document).ready(function(){
 
 			firstname:{
 				required: true,
-				minlength: 3,
 				maxlength: 16,
 			},
 
 			lastname:{
 				required: true,
-				minlength: 3,
 				maxlength: 16,
 			},
 
+			patronymic:{
+				required: true,
+				maxlength: 16,
+			},
 
 			email:{
 				required: true,
-				minlength: 3,
-				maxlength: 16,
 				email: true,
 			},
 		},
@@ -45,31 +45,35 @@ $(document).ready(function(){
 		messages:{
 
 			login:{
-				required: "Это поле обязательно для заполнения",
-				minlength: "Логин должен быть минимум 4 символа",
-				maxlength: "Максимальное число символо - 16",
+				required: "* это обязательно!",
+				minlength: "Минимум 4 символа",
+				maxlength: "Максимум 16 символов",
 			},
 
 			password:{
-				required: "Это поле обязательно для заполнения",
+				required: "* это обязательно!",
 				minlength: "Пароль должен быть минимум 6 символа",
-				maxlength: "Максимальное число символо - 16",
+				maxlength: "Максимум 16 символов",
 			},
 
 			firstname:{
-				required: "Это поле обязательно для заполнения",
-				minlength: "Должно быть минимум 6 символов",
+				required: "* это обязательно!",
+				maxlength: "Максимум 16 символов",
 			},
 
 			lastname:{
-				required: "Это поле обязательно для заполнения",
-				minlength: "Должно быть минимум 6 символов",
+				required:"* это обязательно!",
+				maxlength: "Максимум 16 символов",
+			},
+
+			patronymic:{
+				required: "* это обязательно!",
+				maxlength: "Максимум 16 символов",
 			},
 
 			email:{
-				required: "Это поле обязательно для заполнения",
-				minlength: "Должно быть минимум 6 символов",
-				email: "Не похоже на имэйл",
+				required: "* это обязательно!",
+				email: "Не похоже на почту :(",
 			},
 
 			checkPassword:{

@@ -19,6 +19,6 @@ $checkLogin = $result->fetch_assoc();
 if(isset($checkLogin['user_ID'])){
 	echo 'Этот логин уже занят!';
 } else {
-	echo 'Логин свободен!';
+	echo 'Превосходно!';
 }
 

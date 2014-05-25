@@ -1,6 +1,6 @@
 <?php
 
-function checkFillField($field, $length = 3){
+function checkFillField($field, $length = 1){
 	global $feedback;
 	if(strlen(clearStr($field)) > $length){
 		return clearStr($field);
@@ -13,16 +13,16 @@ function checkFillField($field, $length = 3){
 function checkRegForm(){
 	global $db, $feedback;
 	$dataReg = array(); // поля, возвращаемые после проверок
-	define("MIN_LEN_FIELD", 6);
 
 	$firstname = checkFillField($_POST['firstname']);
 	$lastname = checkFillField($_POST['lastname']);
-	$login = checkFillField($_POST['login'], MIN_LEN_FIELD);
-	$password = md5(checkFillField($_POST['password'], MIN_LEN_FIELD));	
+	$patronymic = checkFillField($_POST['patronymic']);
+	$login = checkFillField($_POST['login'], 4);
+	$password = md5(checkFillField($_POST['password'], 6));
 	$email = checkFillField($_POST['email']); /********************доделать!!!**RegExp*******************/
 
 	/*обязательные поля*/
-	if($login && $password && $firstname && $lastname && $email){
+	if($login && $password && $firstname && $lastname && $patronymic && $email){
 
 		/*Проверка логина на занятость*/
 		$sql = "SELECT user_ID FROM users WHERE login = '$login'";
@@ -42,6 +42,7 @@ function checkRegForm(){
 			$dataReg['password'] = $password;
 			$dataReg['firstname'] = $firstname;
 			$dataReg['lastname'] = $lastname;
+			$dataReg['patronymic'] = $patronymic;
 			$dataReg['email'] = $email;
 			return $dataReg;
 		}
@@ -52,13 +53,16 @@ function checkRegForm(){
 	}
 }
 
-function createNewUser($login, $password, $firstname, $lastname, $email){
+function createNewUser($login, $password, $firstname, $lastname, $patronymic, $email){
 	global $db;
 
-	if (!empty($login) && !empty($password) && !empty($firstname) && !empty($lastname) && !empty($email)){
-		$sql = "INSERT INTO users(login, password, firstname, lastname, email) VALUES(?,?,?,?,?)";
+	if (!empty($login) 		&& !empty($password) && 
+		!empty($firstname) 	&& !empty($lastname) && 
+		!empty($patronymic) && !empty($email))	{
+
+		$sql = "INSERT INTO users(login, password, firstname, lastname, patronymic, email) VALUES(?,?,?,?,?,?)";
 		$result = $db->prepare($sql);
-		$result->bind_param('sssss', $login, $password, $firstname, $lastname, $email);
+		$result->bind_param('ssssss', $login, $password, $firstname, $lastname, $patronymic, $email);
 
 		if($result->execute()){
 			echo "New user created!";
