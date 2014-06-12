@@ -7,4 +7,4 @@ require_once('database/connect.php');
 
 require_once('other.php');
 
-require_once("model/registration.php");
+require_once('model/m_registration.php');

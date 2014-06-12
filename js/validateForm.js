@@ -39,7 +39,7 @@ $(document).ready(function(){
 				required: true,
 				email: true,
 			},
-		},
+	},
 
 		
 		messages:{

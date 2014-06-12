@@ -1,25 +1,40 @@
 <?php
 
 function checkFillField($field, $length = 1){
-	global $feedback;
 	if(strlen(clearStr($field)) > $length){
 		return clearStr($field);
 	} else {
-		$feedback[] = "должно  быть длиннее $length символов!";
 		return false;
 	}
 }
 
 function checkRegForm(){
 	global $db, $feedback;
+	
 	$dataReg = array(); // поля, возвращаемые после проверок
 
 	$firstname = checkFillField($_POST['firstname']);
 	$lastname = checkFillField($_POST['lastname']);
 	$patronymic = checkFillField($_POST['patronymic']);
-	$login = checkFillField($_POST['login'], 4);
-	$password = md5(checkFillField($_POST['password'], 6));
-	$email = checkFillField($_POST['email']); /********************доделать!!!**RegExp*******************/
+	
+	if(checkFillField($_POST['password'], 5)){
+		$password = md5((checkFillField($_POST['password'], 5)));
+	} else 
+		$password = false;
+	
+	if(preg_match("/^[a-zA-Z0-9_]{4,16}$/", checkFillField($_POST['login']))){
+		$login = checkFillField($_POST['login'], 4);
+	} else {
+		$login = false;
+	}
+	
+	
+	if(preg_match("/^([a-zA-Z0-9_]|\\-|\\.)+@(([a-z0-9_]|\\-)+\\.)+[a-z]{2,6}\$/", checkFillField($_POST['email']))){
+		$email = checkFillField($_POST['email']);
+	} else {
+		$email = false;
+	}
+	
 
 	/*обязательные поля*/
 	if($login && $password && $firstname && $lastname && $patronymic && $email){
@@ -56,19 +71,17 @@ function checkRegForm(){
 function createNewUser($login, $password, $firstname, $lastname, $patronymic, $email){
 	global $db;
 
-	if (!empty($login) 		&& !empty($password) && 
+	if (!empty($login) 			&& !empty($password) && 
 		!empty($firstname) 	&& !empty($lastname) && 
-		!empty($patronymic) && !empty($email))	{
+		!empty($patronymic)  && !empty($email))	{
 
 		$sql = "INSERT INTO users(login, password, firstname, lastname, patronymic, email) VALUES(?,?,?,?,?,?)";
 		$result = $db->prepare($sql);
 		$result->bind_param('ssssss', $login, $password, $firstname, $lastname, $patronymic, $email);
 
 		if($result->execute()){
-			echo "New user created!";
 			return true;
 		}else
-			echo "New user don't created!";
 			return false;
 
 	}
