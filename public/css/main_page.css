@@ -13,16 +13,23 @@ body{
 textarea{
 	min-height: 30px;
 	resize: vertical;
+}
 
+textarea, input{
 	outline: none;
 	border: 1px solid #ccc;
 	border-radius: 5px;
-
 	padding: 3px;
 }
 
-textarea:focus{
+textarea:focus, input[type=text]:focus{
 	border: 1px solid #29e;
+}
+
+a{
+	color: #000;
+	font-style: !inherit;
+	text-decoration: none; 
 }
 
 
@@ -399,12 +406,14 @@ span.count{
 	border-bottom: 1px solid #ccc;
 }
 
-#profile_info h3{
-	background-color: #f5f5f5;
+.header_h3{
+	background-color: #eee;
+	border-radius: 3px;
+	color: #000;
 	padding: 5px;
 	font-weight: 300;
-	font-size: 1.3em;
-	margin-bottom: 15px;
+	font-size: 1.7em;
+	margin-bottom: 20px;
 }
 
 #profile_info table{
@@ -432,6 +441,7 @@ span.count{
 #new_post textarea{
 	width: 450px;
 	font-size: 14pt;
+	height: 30px;
 }
 /*
 #new_post textarea:placeholder{
@@ -564,7 +574,7 @@ span.count{
 	width: 100%;
 }
 
-input[type="submit"]{
+.add_comment input[type="submit"], #new_post input[type=submit]{
 	display: block;
 	margin-top: 5px;
 	background: #eee;
@@ -618,8 +628,18 @@ input[type="submit"]{
 	color: #912428;
 	margin-bottom: 20px;
 	text-align: right;
+	opacity: 0;
 
 	clear: both;
+}
+
+.body_comment:hover .actions_comment{
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+
+	opacity: 1;
 }
 
 .body_comment{
@@ -635,4 +655,88 @@ input[type="submit"]{
 	padding: 0;
 	margin: 20px 0;
 	color: #d12420;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Центральный блок для настроек*/
+
+#settings .nav{
+	font-style: italic;
+	font-size: 1.2em;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 5px;
+}
+
+#settings .nav li{
+	padding: 10px 5px 2px;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.nav .selected{
+	color: #fff;
+	background: #912428;
+}
+
+.settings_form{
+	margin: 30px 20px;
+	padding-bottom: 20px;
+
+	border-bottom: 1px dashed #ccc;
+
+	overflow: hidden;
+}
+
+.settings_form:last-child{
+	border: none;
+}
+
+.settings_form div > *{
+	margin-bottom: 5px;
+}
+
+.settings_form input{
+	padding: 5px 0;
+}
+
+.settings_name{
+	float: left;
+	width: 25%;
+	text-align: right;
+	margin-right: 3%;
+	font-weight: bold;
+	line-height: 2em;
+}
+
+.settings_action{
+	float: left;
+	width: 65%;
+	text-align: left;
+}
+
+.settings_action input{
+	width: 90%;
+}
+
+.settings_select{
+	padding: 0px 10px;
+}
+
+.settings_form input[type=submit]{
+	width: 100px;
+	background: #922;
+	color: #fff;
+
+	border-radius: 7px;
 }
