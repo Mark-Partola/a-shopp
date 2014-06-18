@@ -185,8 +185,8 @@
 						<h3 class="header_h3">Настройки</h3>
 
 						<ul class="nav">
-							<li class="selected"><a href="#">Личные данные</a></li>
-							<li><a href="#">Оформление</a></li>
+							<li class="selected"><a href="?act=main">Личные данные</a></li>
+							<li><a href="?act=decor">Оформление</a></li>
 							<li><a href="#">Приватность</a></li>
 							<li><a href="#">Оповещения</a></li>
 							<li><a href="#">Черный список</a></li>
