@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Home | shoppinga.net</title>
+	<title><?=$title?></title>
 	<meta charset="UTF-8" >
 	<link type="text/css" rel="stylesheet" href="public/css/main_page.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
@@ -50,8 +50,8 @@
 			</div>
 			<div id="header_avatar_and_logout">
 				<img src="public/imgs/avatar.png" alt="">
-				<span id="header_name"><a href="#">Имя Фамилия</a></span>
-				<span id="header_logout"><a href="#">Выход</a></span>
+				<span id="header_name"><a href="#"><?=$userData['firstname']?> <?=$userData['lastname']?></a></span>
+				<span id="header_logout"><a href="?act=logout">Выход</a></span>
 			</div>
 		</div>
 	</div>
@@ -67,17 +67,17 @@
 			<div id="home_nav">
 				<ul class="nav">
 					<li><a href="#">Все организации</a></li>
-					<li><a href="#">Вакансии</a><span class="count">+100</span></li>
+					<li><a href="#">Вакансии</a><span class="count"></span></li>
 					<li><a href="#">Подписки</a></li>
 					<li><a href="#">Чат</a></li>
 				</ul>
 				<div class="settings">
-					Настройки
+					<a href="c_settings.php">Настройки</a>
 				</div>
 				<div id="nav_avatar">
 					<img src="public/imgs/avatar.png" alt="">
 					<form>
-						<input id="status" value="Статусasdasd asdasd dasdasd dsadasd sdasda">
+						<input id="status" value="<?=$userData['status']?>">
 					</form>
 					<div id="triangle"></div>
 				</div>
@@ -87,12 +87,12 @@
 				
 				<div id="side_bar">
 					<div id="about_yourself">
-						<h3>Имя Фамилия</h3>
-						<span id="login">(Login)</span>
-						<span id="hometown">Талдом</span>
+						<h3><?=$userData['firstname']?> <?=$userData['lastname']?></h3>
+						<span id="login">(<?=$userData['login']?>)</span>
+						<span id="hometown"><?=$userData['town']?></span>
 					</div>
 					<ul>
-						<li><a href="mainpage.html">Моя страница</a></li>
+						<li><a href="mainpage.php">Моя страница</a></li>
 						<li><a href="#">Мои друзья<span class="count">+23</span></a></li>
 						<li><a href="#">Мои сообщения<span class="count"></span></a></li>
 						<li><a href="#">Моя события<span class="count"></span></a></li>

@@ -662,17 +662,6 @@ span.count{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 /*Центральный блок для настроек*/
 
 #settings .nav{
@@ -683,13 +672,22 @@ span.count{
 }
 
 #settings .nav li{
+	display: inline-block;
 	padding: 10px 5px 2px;
 	border-radius: 10px 10px 0px 0px;
+	cursor: pointer;
 }
 
-.nav .selected{
+.nav .current{
 	color: #fff;
 	background: #912428;
+}
+
+.box {
+	display: none;
+}
+.box.visible {
+	display: block;
 }
 
 .settings_form{
