@@ -13,3 +13,15 @@ function getUserData($idUser){
 		return false;
 	}
 }
+
+function updateUserData($field, $value, $idUser){
+	global $db;
+
+	$sql = "UPDATE users SET $field = $value WHERE user_ID = $idUser";
+	$result = $db->query($sql) or die('Error query'); //
+	if($result){
+		return true;
+	} else {
+		return false;
+	}
+}

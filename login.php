@@ -2,7 +2,8 @@
 if($_GET['login'] == 'true'){
 	session_start();
 	$_SESSION['authorize'] = true;
-	header('Location: mainpage.php');
+	$_SESSION['id_home'] = 2;
+	header('Location: mainpage.php?act=profile&page=' . 2);
 }
 
 ?>

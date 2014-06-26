@@ -72,7 +72,7 @@
 					<li><a href="#">Чат</a></li>
 				</ul>
 				<div class="settings">
-					<a href="c_settings.php">Настройки</a>
+					<a href="?act=edit">Настройки</a>
 				</div>
 				<div id="nav_avatar">
 					<img src="public/imgs/avatar.png" alt="">
@@ -92,7 +92,7 @@
 						<span id="hometown"><?=$userData['town']?></span>
 					</div>
 					<ul>
-						<li><a href="mainpage.php">Моя страница</a></li>
+						<li><a href="mainpage.php?act=return">Моя страница</a></li>
 						<li><a href="#">Мои друзья<span class="count">+23</span></a></li>
 						<li><a href="#">Мои сообщения<span class="count"></span></a></li>
 						<li><a href="#">Моя события<span class="count"></span></a></li>
